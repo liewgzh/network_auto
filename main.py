@@ -5,6 +5,10 @@ from modules.checker import check_issues
 from modules.fixer import fix_issues
 from modules.reporter import print_report
 
+def load_devices():
+    with open("devices.yml") as f:
+        return yaml.safe_load(f)["devices"]
+
 def main():
     devices = load_devices()
     summary={}
@@ -21,4 +25,5 @@ def main():
 
     print_report(summary)
 
-main()
+if __name__ == "__main__":
+    main()
